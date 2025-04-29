@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/detailStyle.css">
+    <link rel="stylesheet" href="/css/rating.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Varela+Round&display=swap');
+        body{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .reviewContainer{
+            margin-bottom: 30px;
+        }
+        .searchBtn, .searchInput{
+            display: none;
+        }
+    </style>
+    <title>Airbnb</title>
+</head>
+<body>
+    <%- include("../includes/header.ejs") %>
+    <%- include("../includes/flash.ejs") %>
+    
+    <div class="container">
+        <h2> <%=listing.title%></h2>
+        <div class="detailsBox">
+
+            <div class="imageBox">
+                <img src="<%=listing.image.url%>">
+            </div>
+                <p class="ownerText"><i>owned by <%= listing.owner.username %></i></p>
+                <p class="detailText">  <%=listing.description%> </p>
+                <p class="detailText"> RS <%=listing.price%> </p>
+                <p class="detailText"> <%=listing.location%> </p>
+                <p class="detailText"> <%=listing.country%> </p>
+          
+    <div class="btns">
+        <form method="GET" action="/listing/edit/<%=listing.id%>">
+            <button class="editBtn">Edit</button>
+        </form>
+        <br>
+        <form method="POST" action="/listing/<%=listing.id%>?_method=DELETE">
+            <button class="dltBtn">Delete</button>
+        </form>
+    </div>
+
+
+
+   
+    <br>
+
+    <hr>
+
+    <br>
+
+    <% if(currUser) { %>
+
+        <h3>Leave a Review</h3>
+
+        <br>
+
+        <form class="reviewForm" method="POST" action="/listing/<%=listing.id%>/review">
+            <label for="reviews">Review <br> 
+            
+            <fieldset class="starability-slot">
+                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+              </fieldset>
+
+              </label>
+  
+            
+
+            <label for="comment">Comment <br>
+            <textarea rows="5" cols="30" name="review[comment]" required></textarea>
+            </label>
+
+            <br>
+
+            <button>Submit</button>
+        </form>
+
+        <% } %>
+        <br>
+
+        <hr>
+
+        <br>
+
+        <h3 class="AllReviewText">All Reviews</h3>
+
+        <div class="reviewContainer">
+            <% for(review of listing.reviews) { %>
+               <div class="review">
+                    <p class="reviewUser"><%= review.author.username %></p>
+                    <p class="starability-result" data-rating=<%= review.rating %>></p>
+                    <p class="reviewComment"> <%= review.comment %> </p>
+                    <form class="reviewBtnForm" method="POST" action="/listing/<%=listing._id%>/review/<%=review._id%>?_method=DELETE">
+                        <button class="deleteBtn">Delete</button>
+                    </form>
+               </div>
+            <% } %>    
+        </div>
+
+    </div>
+
+</div>
+
+    <%- include("../includes/footer.ejs") %>
+
+    <script src="/js/formValidation.js"></script>
+
+</body>
+</html>

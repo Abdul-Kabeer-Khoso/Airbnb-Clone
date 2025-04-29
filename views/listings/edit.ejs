@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/edit.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Varela+Round&display=swap');
+        .searchBtn, .searchInput{
+            display: none;
+        }
+    </style>
+    <title>Airbnb</title>
+</head>
+<body>
+  
+    <%- include("../includes/header.ejs") %>
+
+    <div class="container">
+        <h1>Edit your Listing</h1>
+    <form  enctype="multipart/form-data" method="POST" action="/listing/<%=listing.id%>?_method=PUT">
+
+        <label for="title">Title <br>
+        <input type="text" name="listing[title]" value="<%=listing.title%>" required>
+        <i class="fa-solid fa-circle-exclamation fa-lg fa-circle-exclamation-input" style="color: #fa2500;"></i>
+        <i class="fa-solid fa-check fa-check-input fa-lg" style="color: #38d001;"></i>
+        <p class="inputInvalidText">Title should be valid!</p>
+        <p class="inputValidText">Title looks good</p>
+        </label>
+        <br> <br>
+
+
+        <label for="description">Description<br>
+        <textarea name="listing[description]" cols="35" rows="4" required><%=listing.description%></textarea>
+        <i class="fa-solid fa-circle-exclamation fa-lg fa-circle-exclamation-textarea" style="color: #fa2500;"></i>
+        <i class="fa-solid fa-check fa-check-textarea fa-lg" style="color: #38d001;"></i>
+        <p class="textareaInvalidText">Description should be valid!</p>
+        <p class="textareaValidText">Amazing description</p>
+        </label>
+        <br> <br>
+
+
+        <!-- <label for="Image link">Image Link <br> 
+        <input type="text" name="listing[image]" value="<%=listing.image%>" required>
+        <i class="fa-solid fa-circle-exclamation fa-lg fa-circle-exclamation-input" style="color: #fa2500;"></i>
+        <i class="fa-solid fa-check fa-check-input fa-lg" style="color: #38d001;"></i>
+        <p class="inputInvalidText">Image link should be valid!</p>
+        <p class="inputValidText">Yes, Image URL is correct</p>
+        </label>
+        <br> <br> -->
+
+        <label for="image">Choose image file<br> 
+            <input type="file" name="listing[image]" id="imageFileInput">
+            <i class="fa-solid fa-circle-exclamation fa-lg fa-circle-exclamation-input" style="color: #fa2500;"></i>
+            <i class="fa-solid fa-check fa-check-input fa-lg" style="color: #38d001;"></i>
+        </label>
+            <br> <br>
+
+        <div class="price-country">
+
+            <div class="price-box">
+            <label for="price">Price<br> 
+                <input  name="listing[price]" value="<%=listing.price%>" class="price" required>
+                <i class="fa-solid fa-circle-exclamation fa-lg fa-circle-exclamation-input" style="color: #fa2500;"></i>
+                <i class="fa-solid fa-check fa-check-input fa-lg" style="color: #38d001;"></i>
+                <p class="inputInvalidText">Price should be valid!</p>
+                <p class="inputValidText">Price looks good</p>
+            </label>
+            </div>
+
+            <div class="country-box">
+            <label for="country">Country <br> 
+                <input type="text" name="listing[country]" value="<%=listing.country%>" class="country" required>
+                <i class="fa-solid fa-circle-exclamation fa-lg fa-circle-exclamation-input" style="color: #fa2500;"></i>
+                <i class="fa-solid fa-check fa-check-input fa-lg" style="color: #38d001;"></i>
+                <p class="inputInvalidText">Country name should be valid!</p>
+                <p class="inputValidText">Yes, this country exists</p>
+            </label>
+            </div>
+
+        </div>
+
+        <br>
+        <label for="location">Location <br> 
+        <input type="text" name="listing[location]" value="<%=listing.location%>" required>
+        <i class="fa-solid fa-circle-exclamation fa-lg fa-circle-exclamation-input" style="color: #fa2500;"></i>
+        <i class="fa-solid fa-check fa-check-input fa-lg" style="color: #38d001;"></i>
+        <p class="inputInvalidText">Location should be valid!</p>
+        <p class="inputValidText">Looks good</p>
+        </label>
+        <br> <br>
+        <button>Save</button>
+    </form>
+    </div>
+
+    <%- include("../includes/footer.ejs") %>
+
+    <script src="/js/formValidation.js"></script>
+
+</body>
+</html>

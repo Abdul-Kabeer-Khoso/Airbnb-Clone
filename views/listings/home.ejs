@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/HomeStyle.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Varela+Round&display=swap');
+        #myBody{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        </style>
+    <title>Airbnb</title>
+</head>
+<body id="myBody">
+    <div>
+        <%- include("../includes/header.ejs") %>
+        <%- include("../includes/flash.ejs")%>
+         <!-- Category Box  -->
+         <div class="categoriesBox">
+            <div class="categories">
+
+                <div class="category-item">
+                    <i class="fa-solid fa-fire  categoryIcon"></i>
+                    <p class="category-text">Trending</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-bed  categoryIcon"></i>
+                    <p class="category-text">Room</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-umbrella-beach  categoryIcon"></i>
+                    <p class="category-text">Beach</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-building  categoryIcon"></i>
+                    <p class="category-text">Buildings</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-mug-hot  categoryIcon"></i>
+                    <p class="category-text">Bed & Breakfast</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-mountain-sun  categoryIcon"></i>
+                    <p class="category-text">Top of the world</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-house-chimney-window  categoryIcon"></i>
+                    <p class="category-text">Cabins</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-tree  categoryIcon"></i>
+                    <p class="category-text">Tropical</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-person-swimming  categoryIcon"></i>
+                    <p class="category-text">Swimming</p>
+                </div>
+
+                <!-- <div class="category-item">
+                    <i class="fa-solid fa-utensils  categoryIcon"></i>
+                    <p class="category-text">Luxe</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-golf-ball-tee  categoryIcon"></i>
+                    <p class="category-text">Golfing</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-tower-observation  categoryIcon"></i>
+                    <p class="category-text">Towers</p>
+                </div>
+                
+                <div class="category-item">
+                    <i class="fa-solid fa-sailboat  categoryIcon"></i>
+                    <p class="category-text">Boats</p>
+                </div>
+
+                <div class="category-item">
+                    <i class="fa-solid fa-palette  categoryIcon"></i>
+                    <p class="category-text">Creative spaces</p>
+                </div> -->
+
+            </div>
+
+            <!-- Display after taxes -->
+             <div class="taxesBox">
+                <p class="taxText">Display total after taxes</p>
+                <div class="toggleButton">
+                    <div class="toggleCircle"></div>
+                </div>
+             </div>
+
+        </div>
+    </div>
+    
+   
+    
+    <main>
+       
+       
+
+    <div class="imageBoxContainer">
+    <% for(listing of alllistings) {%>
+        <a href="/listing/detail/<%=listing.id%>" class="singleListing">
+            <div class="imageBox">
+            <img src="<%=listing.image.url%>" class="listingImage">
+            </div>
+            <p class="title"><b><%=listing.title%></b></p>
+            <p class="price">RS <%=listing.price%> / night <span class="tax">&nbsp; <b>+ 18% GST</b></span></p>
+        </a>
+    <% } %>   
+    </div> 
+    
+    </main>
+
+    <%- include("../includes/footer.ejs") %>
+    <script>
+        let toggleButton = document.getElementsByClassName("toggleButton")[0];
+        let toggleCircle = document.getElementsByClassName("toggleCircle")[0];
+        let taxes = document.getElementsByClassName("tax");
+        let clicked=false;
+
+        toggleCircle.style.transition="translate 0.2s ease-in";
+        toggleButton.addEventListener("click", ()=>{
+            if(clicked==false){
+                toggleCircle.style.translate="24px";
+                toggleButton.style.backgroundColor="green";
+                for(tax of taxes){
+                    tax.style.display="inline";
+                }
+                clicked=true;
+            }
+            else{
+                toggleCircle.style.translate="0px";
+                toggleButton.style.backgroundColor="rgb(151, 151, 151)";
+                for(tax of taxes){
+                    tax.style.display="none";
+                }   
+                clicked=false;
+            }
+            
+        })
+    </script>
+    <script src="/js/searchListing.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Varela+Round&display=swap');
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .myfooter{
+            width: 100%;
+            background-color: rgb(236, 235, 235);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            overflow: hidden;
+            padding: 10px 0px 30px 0px;
+        }
+
+        .fa-brands{
+            margin-left: 20px;
+        }
+
+        .companyName{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .privacyTerms{
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+        }
+
+        .companyName, .privacyTerms{
+            font-family: "Varela Round", "sans-serif";
+            font-size: 20px;
+        }
+        .footerImage{
+            width: 30px;
+            height: auto;
+            aspect-ratio: 1/1;
+        }
+
+        
+        @media ((min-width: 650px) and (max-width: 800px)){
+            .companyName, .privacyTerms{
+                font-size: 2.5vw;
+            }
+        }
+
+
+        @media ((min-width: 450px) and (max-width: 650px)){
+           .companyName, .privacyTerms{
+            font-size: 3vw;
+           }
+           .footerImage{
+            width: 4vw;
+           }
+        }
+
+
+
+        @media(max-width: 450px){
+            .footerImage{
+                width: 6vw;
+            }
+            .companyName, .privacyTerms{
+                font-size: 3.5vw;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <footer class="myfooter">
+    
+
+            <div>
+                <img   src="https://img.icons8.com/ios-filled/50/twitterx--v1.png" alt="twitterx--v1" class="footerImage"/>
+                <img  src="https://img.icons8.com/ios-filled/50/linkedin.png" alt="linkedin" class="footerImage"/>
+                <img  src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="instagram-new" class="footerImage"/>
+                <img  src="https://img.icons8.com/ios-filled/50/facebook--v1.png" alt="facebook--v1" class="footerImage"/>
+            </div>
+
+            <div class="company">
+            <p class="companyName"> &#169; Airbnb Private Limited</p>
+            </div>
+
+           
+
+            <div class="privacy">
+            <a href="#" class="privacyTerms">Privacy Terms</a>
+            </div>
+        
+    </footer>
+</body>
+</html>

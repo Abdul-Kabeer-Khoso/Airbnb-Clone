@@ -1,0 +1,281 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Varela Round", sans-serif;
+}
+
+
+form input, form textarea{
+    font-family: "Varela Round", sans-serif;
+}
+
+label{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    position: relative;
+    margin-bottom: 13px;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+
+form{
+    width: 70%;
+}
+
+.container h1{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+input, textarea{
+    border-radius: 5px;
+    padding: 10px 5px;
+    border: 1px solid grey;
+    width: 95%;
+}
+
+.price-country{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-box, .country-box{
+    width: 50%;
+}
+
+
+.price, .country{
+    width: 90%;
+}
+
+form button{
+    width: 100px;
+    height: 35px;
+    background-color: rgb(3, 185, 140);
+    color: white;
+    font-size: 21px;
+    border-radius: 7px;
+    border: none;
+    margin-top: 15px;
+}
+
+
+form button:hover{
+    cursor: pointer;
+}
+
+
+#imageFileInput{
+    padding: 0px;
+    width: 96%;
+}
+
+
+#imageFileInput:hover{
+    cursor: pointer;
+}
+
+.searchInput, .searchBtn{
+    display: none;
+}
+
+
+/* Valid and invalid text style */
+.inputInvalidText{
+    color: red;
+    font-size: 13px;
+    display: none;
+    position: absolute;
+    left: 3px;
+    top: 135%;
+}
+
+
+.inputValidText{
+    color:  #38d001;
+    font-size: 13px;
+    display: none;
+    position: absolute;
+    left: 3px;
+    top: 135%;
+}
+
+.textareaValidText{
+    color: #38d001;
+    font-size: 13px;
+    display: none;
+    position: absolute;
+    left: 3px;
+    bottom: -13%;
+}
+
+.textareaInvalidText{
+    color: red;
+    font-size: 13px; 
+    display: none;
+    position: absolute;
+    left: 3px;
+    bottom: -13%;
+}
+
+
+/* Icon edits */
+
+.fa-circle-exclamation{
+    visibility: hidden;
+    position: absolute;
+    top: 80%;
+    right: 10px;
+}
+
+.fa-circle-exclamation-textarea{
+    visibility: hidden;
+    position: absolute;
+    top: 35%;
+    right: 10px;
+}
+
+.fa-check-input{
+    visibility: hidden;
+    position: absolute;
+    top: 80%;
+    right: 10px;
+}
+
+.fa-check-textarea{
+    visibility: hidden;
+    position: absolute;
+    top: 35%;
+    right: 10px;
+}
+
+
+/* Media Queries */
+@media ((min-width: 600px) and (max-width: 800px)){
+    .container h1{
+        font-size: 4vw;
+    }
+}
+
+@media ((min-width: 500px) and (max-width: 600px)){
+    .container h1{
+        font-size: 5vw;
+    }
+
+    .price-country{
+        flex-direction: column;
+    }
+
+    .price-box, .country-box{
+        width: 100%;
+    }
+
+    .price, .country{
+        width: 95%;
+    }
+}
+
+
+@media ((min-width: 350px) and (max-width: 500px)){
+    .container h1{
+        font-size: 6vw;
+    }
+    .price-country{
+        flex-direction: column;
+    }
+    form{
+        width: 100vw;
+    }
+    form input{
+        width: 80vw;
+    }
+    label, input{
+        margin-left: 10vw;
+    }
+    form textarea{
+        width: 80vw;
+        margin-left: 10vw;
+    }
+    #imageFileInput{
+        width: 80vw;
+    }
+    .price, .country{
+        width: 80vw;
+        margin-bottom: 10px;
+    }
+    .country{
+        margin-bottom: 0px;
+    }
+    form button{
+        width: 20vw;
+        height: auto;
+        aspect-ratio: 1/0.35;
+        margin-left: 12vw;
+    }
+}
+
+@media ((max-width: 350px)){
+    .container h1{
+        font-size: 7.5svw;
+    }
+    .price-country{
+        flex-direction: column;
+    }
+    form{
+        width: 100vw;
+    }
+    form input{
+        width: 80vw;
+    }
+    label, input{
+        margin-left: 10vw;
+    }
+    form textarea{
+        width: 80vw;
+        margin-left: 10vw;
+    }
+    #imageFileInput{
+        width: 80vw;
+    }
+    .price, .country{
+        width: 80vw;
+        margin-bottom: 10px;
+    }
+    .country{
+        margin-bottom: 0px;
+    }
+    form button{
+        width: 25vw;
+        height: auto;
+        aspect-ratio: 1/0.45;
+        margin-left: 12vw;
+    }
+}
+
+/* Effect on input textfields focus */
+input:focus{
+    outline: none; 
+    border-color: #5793d3; 
+    border-width: 2px;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+}
+
+textarea:focus{
+    outline: none; 
+    border-color: #5793d3; 
+    border-width: 2px;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+}

@@ -1,0 +1,78 @@
+<html>
+<head>
+    <style>
+        body{
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .errorMessageOuterBox{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+      }
+      .errorMessageInnerBox{
+          border-radius: 3px;
+          width: 40vw;
+          height: 30px;
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          background-color: rgb(247, 107, 107);
+          padding: 1vw 3vw;
+      }
+  
+      h3{
+          /* margin-right: 30px; */
+          font-size: 1.5vw;
+          font-family: "Varela Round", sans-serif;
+      }
+
+      .searchBtn, .searchInput{
+            display: none;
+        }
+  
+  
+      @media ((min-width: 400px) and (max-width: 750px)){
+          .errorMessageInnerBox{
+              width: 45vw;
+          }
+          h3{
+              font-size: 2.5vw;
+              text-align: center;
+          }
+      }
+  
+      @media ((max-width: 400px)){
+          .errorMessageInnerBox{
+              width: 50vw;
+              padding: 0vw 1vw;
+              height: 10vw;
+              justify-content: center;
+          }
+          h3{
+              font-size: 2.8vw;
+              text-align: center;
+          }
+          .searchBtn, .searchInput{
+            display: none;
+            }
+      }
+  
+  </style>
+</head>
+<body>
+    <div>
+    <%- include('./includes/header.ejs') %>
+
+    <div class="errorMessageOuterBox">
+        <div class="errorMessageInnerBox">
+            <h3> <%= message %> </h3>
+        </div>
+    </div>
+</div>
+
+    <%- include('./includes/errorfooter.ejs') %>
+</body>
+</html>
